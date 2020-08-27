@@ -1,10 +1,9 @@
 import React , {Component} from 'react';
 import {View,Text,TouchableOpacity,StyleSheet} from 'react-native';
 import {FlatList,ListItem,Icon,Badge} from 'react-native-elements';
-import {RFValue} from 'react-native-responsive-fontsize';
 import firebase from 'firebase';
 import db from '../config'
-import MyHeader from '../components/MyHeader';
+import MyHeader from '../Component/MyHeader';
 export default class MyDonationsScreen extends Component{
 constructor(){
     super()
@@ -20,7 +19,7 @@ constructor(){
      var allDonations=snapshot.docs.map(document=>document.data());
      this.setState({
          allDonations:allDonations
-     })                                                                                  
+     })
  })
 
 }

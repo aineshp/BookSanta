@@ -1,10 +1,9 @@
 import  React, {Component} from 'react';
 import {View,Text,TextInput,StyleSheet,TouchableOpacity, Alert,Modal,KeyboardAvoidingView,ScrollView,TouchableHighlight} from 'react-native';
 import {GoogleBookSearch} from 'react-native-google-books';
-import {RFValue} from 'react-native-responsive-fontsize';
 import firebase from 'firebase';
 import db from '../config';
-import MyHeader from '../components/MyHeader';
+import MyHeader from '../Component/MyHeader';
 import BookSearch from 'react-native-google-books/BookSearch';
 import { FlatList } from 'react-native-gesture-handler';
 export default class BookRequestScreen extends Component{
@@ -146,7 +145,6 @@ alignItems:'center',padding:10,margin:10}}>
               <View>
               <TextInput
                 style ={styles.formTextInput}
-                label={bookName}
                 placeholder={"Enter Book Name"}
                 onChangeText={(text)=>{
                     this.setState({
@@ -169,7 +167,6 @@ alignItems:'center',padding:10,margin:10}}>
                 style ={[styles.formTextInput,{height:300}]}
                 multiline
                 numberOfLines ={8}
-                label={reason}
                 placeholder={"Why do you need the book"}
                 onChangeText ={(text)=>{
                     this.setState({
