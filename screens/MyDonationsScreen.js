@@ -1,7 +1,7 @@
 import React , {Component} from 'react';
 import {View,Text,TouchableOpacity,StyleSheet} from 'react-native';
 import {FlatList,ListItem,Icon,Badge} from 'react-native-elements';
-import {RFValue} from 'react-native-response-fontsize';
+import {RFValue} from 'react-native-responsive-fontsize';
 import firebase from 'firebase';
 import db from '../config'
 import MyHeader from '../components/MyHeader';

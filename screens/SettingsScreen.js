@@ -1,7 +1,7 @@
 import React,{Component} from 'react';
 import {TextComponent,View,Text,TextInput,TouchableOpacity,StyleSheet} from 'react-native';
 import MyHeader from '../components/MyHeader';
-import {RFValue} from 'react-native-response-fontsize';
+import {RFValue} from 'react-native-responsive-fontsize';
 import firebase from 'firebase';
 import db from '../config';
 

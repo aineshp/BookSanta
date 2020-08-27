@@ -1,7 +1,7 @@
 import  React, {Component} from 'react';
 import {View,Text,TextInput,StyleSheet,TouchableOpacity, Alert,Modal,KeyboardAvoidingView,ScrollView,TouchableHighlight} from 'react-native';
 import {GoogleBookSearch} from 'react-native-google-books';
-import {RFValue} from 'react-native-response-fontsize';
+import {RFValue} from 'react-native-responsive-fontsize';
 import firebase from 'firebase';
 import db from '../config';
 import MyHeader from '../components/MyHeader';

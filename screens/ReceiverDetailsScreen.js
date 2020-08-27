@@ -1,7 +1,7 @@
 import React,{Component} from 'react';
 import {Text,StyleSheet,View,TouchableOpacity} from 'react-native';
 import firebase from 'firebase';
-import {RFValue} from 'react-native-response-fontsize';
+import {RFValue} from 'react-native-responsive-fontsize';
 import db from '../config';
 export default class ReceiverDetails extends Component{
     constructor(props){

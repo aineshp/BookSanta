@@ -2,10 +2,10 @@ import React,{Component} from 'react';
 import {View,Text,StyleSheet} from 'react-native';
 import db from '../config';
 import firebase from 'firebase';
-import SwipeableFlatList from '../components/SwipeableFlatList';
-import {RFValue} from 'react-native-response-fontsize';
+import SwipeableFlatlist from '../components/SwipeableFlatlist';
+import {RFValue} from 'react-native-responsive-fontsize';
 export default class NotificationScreen extends Component{
-contructor(props){
+constructor(props){
     super(props);
     this.state={
         userID:firebase.auth().currentUser.email,

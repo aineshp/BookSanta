@@ -1,7 +1,7 @@
 import  React, {Component} from 'react';
-import {View,Text,TextInput,StyleSheet,TouchableOpacity, Alert,Modal,KeyboardAvoidingView,ScrollView} from 'react-native';
+import {View,Text,TextInput,StyleSheet,TouchableOpacity,Image, Alert,Modal,KeyboardAvoidingView,ScrollView} from 'react-native';
 import {Icon} from 'react-native-elements';
-import {RFValue} from 'react-native-response-fontsize';
+import {RFValue} from 'react-native-responsive-fontsize';
 import firebase from 'firebase';
 import db from '../config';
 export default class WelcomeScreen extends Component{
@@ -70,7 +70,7 @@ export default class WelcomeScreen extends Component{
     }
     showModal=()=>{
         return(
-            <Modal animationType="fade"
+            <Modal 
                    transparent={true}
                    visible={this.state.isModalVisible} >
                        <View style={styles.modalContainer}>
@@ -83,17 +83,21 @@ export default class WelcomeScreen extends Component{
                                            this.setState({ isModalVisible:false })
                                        }} />
                                </View>
-                               <TextInput style={styles.formTextInput}
-                               label={firstName}
-                                           placeholder={"First name"}
-                                           maxLength={8}
-                                           onChangeText={(text)=>{
-                                             this.setState({
-                                                 firstName:text
+                               <View style={{flex:0.95}}>
+                  <Text style={styles.label}>First Name </Text>
+                  
+                  <TextInput
+                    style={styles.formInput}
+                    placeholder={"First Name"}
+                    maxLength={12}
+                    onChangeText={(text) => {
+                      this.setState({
+                        firstName: text,
                                              })  
                                            }} />
+                                   <Text style={styles.label}>Last Name </Text>         
                                <TextInput style={styles.formTextInput}
-                               label={lastName}
+                               
                                            placeholder={"Last Name"}
                                            maxLength={8}
                                            onChangeText={(text)=>{
@@ -101,8 +105,9 @@ export default class WelcomeScreen extends Component{
                                                    lastName:text
                                                })
                                            }} />
+                                            <Text style={styles.label}>Contact </Text>
                                <TextInput style={styles.formTextInput}
-                               label={contact}
+                               
                                           placeholder={"Contact"} 
                                           maxLength={10} 
                                           keyboardType="numeric"
@@ -111,8 +116,9 @@ export default class WelcomeScreen extends Component{
                                                   contact:text
                                               })
                                               }} />
+                              <Text style={styles.label}>Address </Text>
                             <TextInput style={styles.formTextInput}
-                            label={address}
+                            
                                           placeholder={"Address"} 
                                           multiline={true}
                                           onChangeText={(text)=>{
@@ -120,8 +126,9 @@ export default class WelcomeScreen extends Component{
                                                   address:text
                                               })
                                               }} />
+                    <Text style={styles.label}>EmailID </Text>
                   <TextInput style={styles.formTextInput}
-                  lavel={emailID}
+                 
                                           placeholder={"EmailID"}  
                                           keyboardType="email-address"                                       
                                           onChangeText={(text)=>{
@@ -129,8 +136,9 @@ export default class WelcomeScreen extends Component{
                                                   emailID:text
                                               })
                                               }} />
+                              <Text style={styles.label}>Password </Text>                 
                                               <TextInput style={styles.formTextInput}
-                                              label={password}
+                                            
                                           placeholder={"Password"}  
                                           secureTextEntry={true}                                       
                                           onChangeText={(text)=>{
@@ -138,8 +146,9 @@ export default class WelcomeScreen extends Component{
                                                   password:text
                                               })
                                               }} />
+                          <Text style={styles.label}>Confirm Password </Text>
                     <TextInput style={styles.formTextInput}
-                                          label={confirmPassword}
+                                      
                                           placeholder={"ConfirmPassword"}  
                                           secureTextEntry={true}                                       
                                           onChangeText={(text)=>{
@@ -147,6 +156,7 @@ export default class WelcomeScreen extends Component{
                                                   confirmPassword:text
                                               })
                                               }} />     
+                                </View>              
                                <View style={styles.modalBackButton} >
                                <TouchableOpacity style={styles.registrationButton}
                                                  onPress={()=>
@@ -178,14 +188,8 @@ export default class WelcomeScreen extends Component{
         <View
           style={{ flex: 0.25}}
         >
-        <View style={{flex:0.15}}/>
-        <View style={styles.santaView}>
-          <Image
-          source={require('../assets/santa.png')}
-          style={styles.santaImage}
-           />
-         </View>
-        </View>
+          
+          </View>
         <View style={{ flex: 0.45 }}>
 
           <View style={styles.TextInput}>
@@ -211,6 +215,7 @@ export default class WelcomeScreen extends Component{
               });
             }}
           />
+          
           </View>
           <View style={{flex:0.5,  alignItems:"center",}}>
           <TouchableOpacity
@@ -229,6 +234,7 @@ export default class WelcomeScreen extends Component{
             <Text style={styles.buttonText}>SignUp</Text>
           </TouchableOpacity>
 
+
           </View>
         </View>
 
@@ -236,12 +242,13 @@ export default class WelcomeScreen extends Component{
           style={{ flex: 0.3}}
         >
         <Image
-        source={require('../assets/book.png')}
+        source={require('../assets/request-book.png')}
         style={styles.bookImage}
         resizeMode={"stretch"}
          />
         </View>
       </View>
+
     );
   }
 }
@@ -256,6 +263,7 @@ const styles = StyleSheet.create({
     height: RFValue(50),
     borderWidth: 1.5,
     borderColor: "#ffffff",
+    backgroundColor:"white",
     fontSize: RFValue(20),
     paddingLeft: RFValue(10),
   },
@@ -277,7 +285,7 @@ const styles = StyleSheet.create({
     elevation: 16,
   },
   buttonText: {
-    color: "#32867d",
+    color: "black",
     fontWeight: "200",
     fontSize: RFValue(20),
   },
@@ -342,16 +350,11 @@ signupText:{
   fontWeight:"bold",
   color:"#32867d"
 },
-santaView:{
+View:{
   flex:0.85,
   justifyContent:"center",
   alignItems:"center",
   padding:RFValue(10)
-},
-santaImage:{
-  width:"70%",
-  height:"100%",
-  resizeMode:"stretch"
 },
 TextInput:{
   flex:0.5,
@@ -359,7 +362,16 @@ TextInput:{
   justifyContent:"center"
 },
 bookImage:{
-  width:"100%",
-  height:RFValue(220)
+  width:"20%",
+  height:RFValue(50),
+  marginLeft:RFValue(150),
+  marginTop:RFValue(150)
+},
+label:{
+  fontSize:RFValue(13),
+  color:'#717D7E',
+  fontWeight:'bold',
+  paddingLeft:RFValue(10),
+  marginLeft:RFValue(20)
 }
 });
