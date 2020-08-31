@@ -2,9 +2,10 @@ import React,{Component} from 'react';
 import {View,Text,StyleSheet} from 'react-native';
 import db from '../config';
 import firebase from 'firebase';
-import SwipeableFlatList from '../Component/SwipeableFlatList';
+import SwipeableFlatlist from '../components/SwipeableFlatlist';
+import {RFValue} from 'react-native-responsive-fontsize';
 export default class NotificationScreen extends Component{
-contructor(props){
+constructor(props){
     super(props);
     this.state={
         userID:firebase.auth().currentUser.email,
@@ -56,36 +57,45 @@ contructor(props){
         )
    }
   
-  
-    render(){
-      return(
-        <View style={styles.container}>
-          <View style={{flex:0.1}}>
-            <MyHeader title={"Notifications"} navigation={this.props.navigation}/>
-          </View>
-          <View style={{flex:0.9}}>
-            {
-              this.state.allNotifications.length === 0
-              ?(
-                <View style={{flex:1, justifyContent:'center', alignItems:'center'}}>
-                  <Text style={{fontSize:25}}>You have no notifications</Text>
-                </View>
-              )
-              :(
-                <SwipeableFlatlist allNotifications={this.state.allNotifications}/>
-              )
-            }
-          </View>
+   render(){
+    return(
+      <View style={styles.container}>
+        <View style={{flex:0.13}}>
+          <MyHeader title={"Notifications"} navigation={this.props.navigation}/>
         </View>
-      )
-    }
+        <View style={{flex:0.8}}>
+          {
+            this.state.allNotifications.length === 0
+            ?(
+              <View style={styles.imageView}>
+                <Image
+                source={require('../assets/Notification.png')}/>
+                <Text style={{fontSize:25}}>You have no notifications</Text>
+              </View>
+            )
+            :(
+              <SwipeableFlatlist allNotifications={this.state.allNotifications}/>
+            )
+          }
+        </View>
+      </View>
+    )
   }
-  
-  
-  const styles = StyleSheet.create({
-    container : {
-      flex : 1
-    }
-  })
+}
 
 
+const styles = StyleSheet.create({
+  container : {
+    flex : 1,
+    backgroundColor:'#deeeed'
+  },
+  imageView:{
+    flex:1,
+    justifyContent:'center',
+    alignItems:'center'
+  },
+  LiTitle:{
+    color: 'black',
+    fontWeight: 'bold'
+  }
+})

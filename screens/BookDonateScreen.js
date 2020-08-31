@@ -2,8 +2,9 @@ import  React, {Component} from 'react';
 import {View,Text,TextInput,StyleSheet,TouchableOpacity, Alert,Modal,KeyboardAvoidingView,ScrollView,Image} from 'react-native';
 import {ListItem} from 'react-native-elements';
 import firebase from 'firebase';
+import {RFValue} from 'react-native-responsive-fontsize';
 import db from '../config';
-import MyHeader from '../Component/MyHeader';
+import MyHeader from '../components/MyHeader';
 
 export default class BookDonateScreen extends Component{
     constructor(){
